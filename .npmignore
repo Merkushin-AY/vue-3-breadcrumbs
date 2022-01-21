@@ -1,0 +1,7 @@
+.idea
+.git
+node_modules
+src
+examples
+.gitignore
+rollup.config.js
