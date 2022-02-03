@@ -14,26 +14,27 @@
           class="am-breadcrumbs__item"
         >
           <slot name="crumb" :crumb="crumb">
-            <span
-                v-if="crumb.current"
-                class="am-breadcrumbs__link am-breadcrumbs__link_current"
-            >
-              {{ crumb.label }}
-            </span>
-            <router-link
-                v-else
-                class="am-breadcrumbs__link"
-                :to="crumb.link"
-            >
-              {{ crumb.label }}
-            </router-link>
+            <div class="am-breadcrumbs__link-wrapper">
+              <span
+                  v-if="crumb.current"
+                  class="am-breadcrumbs__link am-breadcrumbs__link_current"
+              >
+                {{ crumb.label }}
+              </span>
+              <router-link
+                  v-else
+                  class="am-breadcrumbs__link"
+                  :to="crumb.link"
+              >
+                {{ crumb.label }}
+              </router-link>
+            </div>
             <div class="am-breadcrumbs__separator">
               /
             </div>
           </slot>
         </li>
       </template>
-
     </ol>
   </nav>
 </template>
@@ -72,7 +73,9 @@ export default {
   padding: 0 4px;
   color: rgb(150, 159, 175);
 }
-
+.am-breadcrumbs__link-wrapper {
+  display: inline;
+}
 .am-breadcrumbs__link {
   display: inline;
   color: #2c3e50;

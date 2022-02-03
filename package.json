@@ -14,7 +14,8 @@
   "scripts": {
     "build": "rollup -c",
     "install:vue": "cd ./examples/vue && npm install",
-    "dev:vue": "cd ./examples/vue && npm run dev"
+    "dev:vue": "cd ./examples/vue && npm run dev",
+    "dev:nuxt": "cd ./examples/nuxt && npm run dev"
   },
   "author": {
     "name": "Alexey Merkushin",

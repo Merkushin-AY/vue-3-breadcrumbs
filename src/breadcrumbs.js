@@ -38,9 +38,10 @@ export default {
                 if (!breadcrumb) return false
 
                 // 4. Create and push breadcrumb
+                let isBcObject = typeof breadcrumb === 'object'
                 breadcrumb = {
-                    label: (typeof breadcrumb !== 'object') ? breadcrumb : breadcrumb.label,
-                    link: breadcrumb.link || route.path,
+                    label: (isBcObject) ? breadcrumb.label : breadcrumb,
+                    link: (isBcObject && breadcrumb.link) ? breadcrumb.link : route.path,
                     current: i + 1 >= arPath.length,
                     _path: iterablePath
                 }
