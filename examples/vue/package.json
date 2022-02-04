@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "vue": "^3.2.27",
-    "vue-3-breadcrumbs": "^1.1.0",
+    "vue-3-breadcrumbs": "file:../..",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {

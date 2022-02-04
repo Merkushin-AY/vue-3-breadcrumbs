@@ -3,7 +3,7 @@
 
 
 ## Description
-This plugin adds breadcrumbs to your project based on vue 3. It provides easy and variable setup with Vue Router. Also, it includes the small component.
+This plugin adds breadcrumbs to your project based on vue 3 or nuxt 3. It provides easy and variable setup with Vue Router. Also, it includes the small component.
 
 
 ## Dependencies
@@ -55,12 +55,24 @@ If breadcrumb already exist in current chain, it won't be recalculated.
 export default {
     name: 'catalogPage',
     mounted() {
-        console.log(this.$breadcrumbs) // you can simply get current breadcrumbs
+        console.log(this.$breadcrumbs.value) // you can simply get current breadcrumbs
         
         // You can reactively change it
         // !! It won't change meta object, or object returned by breadcrumb function
-        this.$breadcrumbs[0].label = 'New label'
+        this.$breadcrumbs.value[0].label = 'New label'
         
+        // if for some reason you need to recalculate breadcrumbs or create crumb for some path u can use these methods
+        /**
+         * Recalculate breadcrumbs for route
+         * @param {object} route
+         */
+        $breadcrumbs.setBreadcrumbsByRoute(this.$route)
+        /**
+         * Create breadcrumb object by path
+         * @param {string} path  
+         * @param {boolean} [isCurrent = false]
+         */
+        const newCrumb = $breadcrumbs.createBreadcrumb('/some-path', true)
     }
 }
 ```
@@ -152,4 +164,59 @@ Don't forget to include it first (by includeComponent option). This is [async co
         </router-link>
     </template>
 </AmBreadcrumbs>
+```
+
+
+### Nuxt
+Works within ssr mode
+1. Add plugin
+```js
+// plugins/breadcrumbs.js
+import { defineNuxtPlugin } from '#app'
+import breadcrumbs from 'vue-3-breadcrumbs'
+
+export default defineNuxtPlugin((nuxtApp) => {
+    const app = nuxtApp.vueApp.use(breadcrumbs, {
+        includeComponent: true, // same as for vue
+    })
+
+    // without this return, you won't be able to access $breadcrumbs from useNuxtApp directly,
+    // but this.$breadcrumbs will be available anyway
+    return {
+        provide: {
+            breadcrumbs: app.config.globalProperties.$breadcrumbs
+        }
+    }
+})
+```
+
+2. Set breadcrumbs for pages
+```js
+// pages/index.vue
+export default {
+    name: 'mainPage',
+    setup() {
+        definePageMeta({
+            breadcrumb: 'Home page' // string, object or function
+        })
+    },
+}
+```
+3. Use Component (see vue above)
+```html
+<AmBreadcrumbs/>
+```
+4. Access breadcrumbs
+```js
+// pages/index.vue
+export default {
+    name: 'mainPage',
+    setup() {
+        const { $breadcrumbs } = useNuxtApp()
+        console.log('Breadcrumbs array', $breadcrumbs.value)
+    },
+    mounted() {
+        console.log('Breadcrumbs in mounted', this.$breadcrumbs.value)
+    },
+}
 ```

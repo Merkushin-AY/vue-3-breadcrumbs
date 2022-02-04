@@ -1,7 +1,7 @@
 import { defineNuxtPlugin } from '#app'
 
-import breadcrumbs from './../../../src/breadcrumbs'
-//import breadcrumbs from 'vue-3-breadcrumbs'
+// import breadcrumbs from './../../../src/breadcrumbs'
+import breadcrumbs from 'vue-3-breadcrumbs'
 
 export default defineNuxtPlugin((nuxtApp) => {
     const app = nuxtApp.vueApp.use(breadcrumbs, {

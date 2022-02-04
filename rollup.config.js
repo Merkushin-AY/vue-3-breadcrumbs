@@ -31,10 +31,8 @@ export default {
   ],
 
   plugins: [
-    vue({
-      preprocessStyles: true
-    }),
-    postcss(), // It has to be used because css option in vue plugin is broken https://github.com/vuejs/rollup-plugin-vue/issues/410
     peerDepsExternal(),
+    vue(),
+    postcss(), // It has to be used because css option in vue plugin is broken https://github.com/vuejs/rollup-plugin-vue/issues/410
   ],
 }

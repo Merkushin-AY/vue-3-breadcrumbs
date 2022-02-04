@@ -1,13 +1,13 @@
 <template>
   <nav
-      v-if="$breadcrumbs && $breadcrumbs.length && (showCurrentCrumb || !$breadcrumbs[0].current)"
+      v-if="$breadcrumbs && $breadcrumbs.value && $breadcrumbs.value.length && (showCurrentCrumb || !$breadcrumbs.value[0].current)"
       class="am-breadcrumbs"
   >
     <ol
         class="am-breadcrumbs__list"
     >
       <template
-          v-for="(crumb, idx) in $breadcrumbs"
+          v-for="(crumb, idx) in $breadcrumbs.value"
       >
         <li
           v-if="showCurrentCrumb || !crumb.current"

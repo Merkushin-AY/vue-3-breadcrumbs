@@ -7,8 +7,8 @@ import Catalog from './pages/catalog.vue'
 import Item from './pages/item.vue'
 import SubItem from './pages/subitem.vue'
 
-import breadcrumbs from './../../../src/breadcrumbs'
-//import breadcrumbs from 'vue-3-breadcrumbs'
+// import breadcrumbs from './../../../src/breadcrumbs'
+import breadcrumbs from 'vue-3-breadcrumbs'
 
 const app = createApp(App)
 

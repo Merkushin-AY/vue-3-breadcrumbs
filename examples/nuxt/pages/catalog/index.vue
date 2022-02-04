@@ -4,6 +4,7 @@
       Catalog page
     </h1>
     <button @click="changeBC">Change bc</button>
+    <button @click="setNewBC">Set new bc</button>
     <NuxtLink
         :to="$route.fullPath + '#special'"
     >
@@ -28,7 +29,11 @@ export default {
   },
   methods: {
     changeBC() {
-      this.$breadcrumbs[0].label = 'test'
+      this.$breadcrumbs.value[0].label = 'test'
+    },
+    setNewBC() {
+      let route = this.$router.resolve('/about')
+      this.$breadcrumbs.setBreadcrumbsByRoute(route)
     },
   },
 }

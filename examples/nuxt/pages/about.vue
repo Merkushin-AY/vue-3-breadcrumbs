@@ -20,6 +20,7 @@ export default {
     })
 
     console.log('Nuxt App breadcrumbs', $breadcrumbs)
+    // console.log('Nuxt App breadcrumbs', $breadcrumbs.#vueApp)
   },
 }
 </script>

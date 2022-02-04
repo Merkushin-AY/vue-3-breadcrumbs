@@ -1,15 +1,20 @@
 {
   "name": "vue-3-breadcrumbs",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Breadcrumbs logic and component for vue 3",
+  "repository": "github:Merkushin-AY/vue-3-breadcrumbs",
+  "homepage": "https://github.com/Merkushin-AY/vue-3-breadcrumbs#readme",
+  "bugs": "https://github.com/Merkushin-AY/vue-3-breadcrumbs/issues",
   "keywords": [
     "breadcrumbs",
     "vue",
     "vuejs",
-    "plugin"
+    "plugin",
+    "nuxt",
+    "nuxtjs"
   ],
-  "main": "dist/vue-breadcrumbs.common.js",
-  "module": "dist/vue-breadcrumbs.esm.js",
+  "main": "dist/cjs/breadcrumbs.js",
+  "module": "dist/esm/breadcrumbs.js",
   "unpkg": "dist/vue-breadcrumbs.min.js",
   "scripts": {
     "build": "rollup -c",
